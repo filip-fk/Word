@@ -1,41 +1,25 @@
 ﻿<UserControl
     x:Class="App1.MyUserControl1"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" >
-    <StackPanel HorizontalAlignment="Center">
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-        <StackPanel.Resources>
-            <!--Create a Style for a TextBlock.-->
-            <Style TargetType="TextBlock" x:Key="TextBlockStyle">
-                <Setter Property="FontSize" Value="14"/>
-                <Setter Property="VerticalAlignment" Value="Bottom"/>
-            </Style>
-
-            <!--Create a Style for a TextBox.-->
-            <Style TargetType="TextBox" x:Key="TextBoxStyle">
-                <Setter Property="Width" Value="200"/>
-                <Setter Property="Height" Value="30"/>
-                <Setter Property="Margin" Value="4"/>
-                <Setter Property="FontSize" Value="14"/>
-            </Style>
-        </StackPanel.Resources>
-        <TextBlock FontSize="18" Text="Enter your name."/>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Style="{StaticResource TextBlockStyle}">
-                First Name:
-            </TextBlock>
-            <TextBox Name="firstName" Style="{StaticResource TextBoxStyle}"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Style="{StaticResource TextBlockStyle}">
-                Last Name:
-            </TextBlock>
-            <TextBox Name="lastName" Style="{StaticResource TextBoxStyle}"  
-                     Margin="6,4,4,4"/>
-
-        </StackPanel>
-        <Button Content="Submit" Click="Button_Click"/>
-        <TextBlock Name="result" Style="{StaticResource TextBlockStyle}" />
-
+    <StackPanel VerticalAlignment="Top" HorizontalAlignment="Stretch">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="r" Grid.Column="0" Margin="10,10,0,10" FontFamily="Tempus Sans ITC"/>
+                <TextBlock Text="Baum" Grid.Column="0" Margin="5,10,0,10" FontFamily="Tempus Sans ITC" FontWeight="ExtraBold"/>
+                <TextBlock Text=", - e" Grid.Column="0" Margin="0,10" FontFamily="Tempus Sans ITC"/>
+            </StackPanel>
+            <Border BorderBrush="Black" Grid.Column="1" BorderThickness="2,0,0,0"/>
+            <TextBlock Text="tree" Grid.Column="1" Margin="10" FontFamily="Tempus Sans ITC"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1">
+                <Button Background="{x:Null}" FontFamily="Segoe MDL2 Assets" Content="&#xE104;" Grid.Column="1" HorizontalAlignment="Right"/>
+                <Button Background="{x:Null}" FontFamily="Segoe MDL2 Assets" Content="&#xE107;" Grid.Column="1" HorizontalAlignment="Right"/>
+            </StackPanel>
+        </Grid>
     </StackPanel>
 </UserControl>

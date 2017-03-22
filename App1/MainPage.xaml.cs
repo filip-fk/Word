@@ -38,6 +38,8 @@ namespace App1
             coreTitleBar.ExtendViewIntoTitleBar = false;
 
             this.ViewModel = new RecordingViewModel();
+
+            num_of_words_r.Text = $"{de_word_der.Items.Count() + de_word_der_load.Items.Count()}";
         }
 
         public RecordingViewModel ViewModel { get; set; }
@@ -71,7 +73,7 @@ namespace App1
             {
                 if ((new_de.Text != null) && (new_bg.Text != null))
                 {
-                    localSettings.Values["de_e_save"] += new_de.Text + ",";
+                    localSettings.Values["de_bg_e_save"] += new_de.Text + "1" + "," + new_bg.Text + "2" + "," + pl + "3" + ";";
                     add_die();
                 }
             }
@@ -81,7 +83,7 @@ namespace App1
             {
                 if ((new_de.Text != null) && (new_bg.Text != null))
                 {
-                    localSettings.Values["de_s_save"] += new_de.Text + ",";
+                    localSettings.Values["de_bg_s_save"] += new_de.Text + "1" + "," + new_bg.Text + "2" + "," + pl + "3" + ";";
                     add_das();
                 }
             }
@@ -117,56 +119,6 @@ namespace App1
             stp_bg_r.Children.Add(txb1_bg_r_word);
             
             bg_word_der.Items.Add(stp_bg_r);
-        }
-
-        public void add_der2()
-        {
-            if (de_word_der.Items.Count > 0)
-            {
-                Border der_brd_de = new Border();
-                der_brd_de.Height = 40;
-                der_brd_de.BorderBrush = new SolidColorBrush(Colors.Black);
-                der_brd_de.BorderThickness = new Thickness(0, 1, 0, 0);
-
-                Border der_brd_bg = new Border();
-                der_brd_bg.Height = 40;
-                der_brd_bg.BorderBrush = new SolidColorBrush(Colors.Black);
-                der_brd_bg.BorderThickness = new Thickness(0, 1, 0, 0);
-
-                TextBlock newde_toadd = new TextBlock();
-                newde_toadd.Text = new_de.Text;
-                newde_toadd.FontSize = 20;
-                newde_toadd.FontWeight = FontWeights.Bold;
-                newde_toadd.Height = 40;
-                der_brd_de.Child = newde_toadd;
-
-                TextBlock newbg_toadd = new TextBlock();
-                newbg_toadd.Text = new_bg.Text;
-                newbg_toadd.FontSize = 20;
-                newbg_toadd.Height = 40;
-                newbg_toadd.Margin = new Thickness(5, 0, 0, 0);
-                der_brd_bg.Child = newbg_toadd;
-
-                de_word_der.Items.Add(der_brd_de);
-                bg_word_der.Items.Add(der_brd_bg);
-            }
-
-            else
-            {
-                TextBlock newde_toadd = new TextBlock();
-                newde_toadd.Text = new_de.Text;
-                newde_toadd.FontSize = 20;
-                newde_toadd.FontWeight = FontWeights.Bold;
-                newde_toadd.Height = 40;
-                de_word_der.Items.Add(newde_toadd);
-
-                TextBlock newbg_toadd = new TextBlock();
-                newbg_toadd.Text = new_bg.Text;
-                newbg_toadd.FontSize = 20;
-                newbg_toadd.Height = 40;
-                newbg_toadd.Margin = new Thickness(5, 0, 0, 0);
-                bg_word_der.Items.Add(newbg_toadd);
-            }
         }
 
         public void add_die()

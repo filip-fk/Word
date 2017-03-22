@@ -84,7 +84,7 @@
                     </Button.RenderTransform>
                 </Button>
             </Grid>
-            <ItemsControl x:Name="addCont" HorizontalAlignment="Left" MinWidth="360" Visibility="Visible" RenderTransformOrigin="0.5,0.5">
+            <ItemsControl x:Name="addCont" HorizontalAlignment="Left" MinWidth="360" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5">
                 <ItemsControl.RenderTransform>
                     <CompositeTransform/>
                 </ItemsControl.RenderTransform>
@@ -132,6 +132,11 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="German" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
                         <TextBlock Grid.Column="1" Text="English" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                            <TextBlock Grid.Column="1" Text="Words: (" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="13"/>
+                            <TextBlock x:Name="num_of_words_r" Grid.Column="1" Text="" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="15"/>
+                            <TextBlock Grid.Column="1" Text=")" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="13"/>
+                        </StackPanel>
                     </Grid>
                     <ScrollViewer Grid.Row="1">
                         <Grid>
@@ -204,14 +209,12 @@
                             </Grid.ColumnDefinitions>
 
                             <StackPanel x:Name="de_word_die" Grid.Column="0" BorderBrush="Black" BorderThickness="0,0,2,0">
-                                <Grid xmlns:src="using:App1" 
-         Margin="0,50,0,0">
+                                <Grid xmlns:src="using:App1" Margin="0,50,0,0">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
                                     <src:MyUserControl1 Grid.Row="0"/>
-                                    <src:MyUserControl1 Grid.Row="1" Margin="0,15,0,0"/>
                                 </Grid>
                             </StackPanel>
                             <StackPanel x:Name="bg_word_die" Grid.Column="1" Margin="0,0,0,0" BorderBrush="Black" BorderThickness="0">
