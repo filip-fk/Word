@@ -150,10 +150,10 @@
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate x:DataType="local:Recording">
                                                 <StackPanel Orientation="Horizontal" Margin="6" Height="30">
-                                                    <TextBlock Text="{x:Bind der_die_das_10}" Width="15" Margin="0,0,12,0" VerticalAlignment="Center" FontSize="25"/>
+                                                    <TextBlock Text="{x:Bind der_die_das_10_r}" Width="15" Margin="0,0,12,0" VerticalAlignment="Center" FontSize="25"/>
                                                     <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-                                                        <TextBlock Text="{x:Bind word_de_10}" Typography.Capitals="Titling" Typography.StylisticSet4="True" FontWeight="Bold" VerticalAlignment="Center" FontSize="25"/>
-                                                        <TextBlock Text="{x:Bind plural_10}" FontWeight="Bold" VerticalAlignment="Center" FontSize="25"/>
+                                                        <TextBlock Text="{x:Bind word_de_10_r}" Typography.Capitals="Titling" Typography.StylisticSet4="True" FontWeight="Bold" VerticalAlignment="Center" FontSize="25"/>
+                                                        <TextBlock Text="{x:Bind plural_10_r}" FontWeight="Bold" VerticalAlignment="Center" FontSize="25"/>
                                                     </StackPanel>
                                                 </StackPanel>
                                             </DataTemplate>
@@ -170,7 +170,7 @@
                                         <DataTemplate x:DataType="local:Recording">
                                             <StackPanel Orientation="Horizontal" Margin="6" Height="30">
                                                 <StackPanel VerticalAlignment="Center">
-                                                    <TextBlock Text="{x:Bind word_bg_10}" FontSize="20"/>
+                                                    <TextBlock Text="{x:Bind word_bg_10_r}" FontSize="20"/>
                                                 </StackPanel>
                                             </StackPanel>
                                         </DataTemplate>
@@ -198,27 +198,55 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="German" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Column="1" Text="English" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="0" Text="German" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+                        <TextBlock Grid.Column="1" Text="English" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                            <TextBlock Grid.Column="1" Text="Words: (" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="13"/>
+                            <TextBlock x:Name="num_of_words_e" Grid.Column="1" Text="" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="15"/>
+                            <TextBlock Grid.Column="1" Text=")" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="13"/>
+                        </StackPanel>
                     </Grid>
                     <ScrollViewer Grid.Row="1">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <!-- <ColumnDefinition Width="*"/>-->
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
+                            <Border BorderBrush="Black" BorderThickness="0,0,2,0">
+                                <StackPanel>
+                                    <ItemsControl x:Name="de_word_die_load" Grid.Column="0" BorderBrush="Black" BorderThickness="0,0,2,0" ItemsSource="{x:Bind ViewModel.Recordings}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate x:DataType="local:Recording">
+                                                <StackPanel Orientation="Horizontal" Margin="6" Height="30">
+                                                    <TextBlock Text="{x:Bind der_die_das_10_e}" Width="15" Margin="0,0,12,0" VerticalAlignment="Center" FontSize="25"/>
+                                                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                                        <TextBlock Text="{x:Bind word_de_10_e}" Typography.Capitals="Titling" Typography.StylisticSet4="True" FontWeight="Bold" VerticalAlignment="Center" FontSize="25"/>
+                                                        <TextBlock Text="{x:Bind plural_10_e}" FontWeight="Bold" VerticalAlignment="Center" FontSize="25"/>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                    <ItemsControl x:Name="de_word_die" FontSize="25">
 
-                            <StackPanel x:Name="de_word_die" Grid.Column="0" BorderBrush="Black" BorderThickness="0,0,2,0">
-                                <Grid xmlns:src="using:App1" Margin="0,50,0,0">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
-                                    <src:MyUserControl1 Grid.Row="0"/>
-                                </Grid>
-                            </StackPanel>
-                            <StackPanel x:Name="bg_word_die" Grid.Column="1" Margin="0,0,0,0" BorderBrush="Black" BorderThickness="0">
+                                    </ItemsControl>
+                                </StackPanel>
+                            </Border>
+                            <StackPanel Grid.Column="1">
+                                <ItemsControl x:Name="bg_word_die_load" BorderBrush="Black" BorderThickness="0,0,2,0" ItemsSource="{x:Bind ViewModel.Recordings}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate x:DataType="local:Recording">
+                                            <StackPanel Orientation="Horizontal" Margin="6" Height="30">
+                                                <StackPanel VerticalAlignment="Center">
+                                                    <TextBlock Text="{x:Bind word_bg_10_e}" FontSize="20"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                                <ItemsControl x:Name="bg_word_die">
 
+                                </ItemsControl>
                             </StackPanel>
                         </Grid>
                     </ScrollViewer>
@@ -238,8 +266,13 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="German" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Column="1" Text="English" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="0" Text="German" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+                        <TextBlock Grid.Column="1" Text="English" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                            <TextBlock Grid.Column="1" Text="Words: (" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="13"/>
+                            <TextBlock x:Name="num_of_words_s" Grid.Column="1" Text="" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="15"/>
+                            <TextBlock Grid.Column="1" Text=")" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="13"/>
+                        </StackPanel>
                     </Grid>
                     <ScrollViewer Grid.Row="1">
                         <Grid>
@@ -247,10 +280,41 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
+                            <Border BorderBrush="Black" BorderThickness="0,0,2,0">
+                                <StackPanel>
+                                    <ItemsControl x:Name="de_word_das_load" Grid.Column="0" BorderBrush="Black" BorderThickness="0,0,2,0" ItemsSource="{x:Bind ViewModel.Recordings}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate x:DataType="local:Recording">
+                                                <StackPanel Orientation="Horizontal" Margin="6" Height="30">
+                                                    <TextBlock Text="{x:Bind der_die_das_10_s}" Width="15" Margin="0,0,12,0" VerticalAlignment="Center" FontSize="25"/>
+                                                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                                        <TextBlock Text="{x:Bind word_de_10_s}" Typography.Capitals="Titling" Typography.StylisticSet4="True" FontWeight="Bold" VerticalAlignment="Center" FontSize="25"/>
+                                                        <TextBlock Text="{x:Bind plural_10_s}" FontWeight="Bold" VerticalAlignment="Center" FontSize="25"/>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                    <ItemsControl x:Name="de_word_das" FontSize="25">
 
-                            <StackPanel x:Name="de_word_das" Grid.Column="0" BorderBrush="Black" BorderThickness="0,0,2,0"/>
-                            <StackPanel x:Name="bg_word_das" Grid.Column="1" Margin="0,0,0,0" BorderBrush="Black" BorderThickness="0">
+                                    </ItemsControl>
+                                </StackPanel>
+                            </Border>
+                            <StackPanel Grid.Column="1">
+                                <ItemsControl x:Name="bg_word_das_load" BorderBrush="Black" BorderThickness="0,0,2,0" ItemsSource="{x:Bind ViewModel.Recordings}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate x:DataType="local:Recording">
+                                            <StackPanel Orientation="Horizontal" Margin="6" Height="30">
+                                                <StackPanel VerticalAlignment="Center">
+                                                    <TextBlock Text="{x:Bind word_bg_10_s}" FontSize="20"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                                <ItemsControl x:Name="bg_word_das">
 
+                                </ItemsControl>
                             </StackPanel>
                         </Grid>
                     </ScrollViewer>
