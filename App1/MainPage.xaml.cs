@@ -39,7 +39,9 @@ namespace App1
 
             this.ViewModel = new RecordingViewModel();
 
-            num_of_words_r.Text = $"{de_word_der.Items.Count() + de_word_der_load.Items.Count()}";
+            num_of_words_r.Text = $"{de_word_der.Items.Count()}" + $"{de_word_der_load.Items.Count()}";
+
+            
         }
 
         public RecordingViewModel ViewModel { get; set; }
@@ -73,6 +75,13 @@ namespace App1
             {
                 if ((new_de.Text != null) && (new_bg.Text != null))
                 {
+                    string lll = string.Empty;
+
+                    if (l.IsChecked == true) { lll = "-"; }
+                    else if (ll.IsChecked == true) { lll = "⸚"; }
+
+                    pl = ", " + lll + " " + pl_10.Text;
+
                     localSettings.Values["de_bg_e_save"] += new_de.Text + "1" + "," + new_bg.Text + "2" + "," + pl + "3" + ";";
                     add_die();
                 }
@@ -83,6 +92,13 @@ namespace App1
             {
                 if ((new_de.Text != null) && (new_bg.Text != null))
                 {
+                    string lll = string.Empty;
+
+                    if (l.IsChecked == true) { lll = "-"; }
+                    else if (ll.IsChecked == true) { lll = "⸚"; }
+
+                    pl = ", " + lll + " " + pl_10.Text;
+
                     localSettings.Values["de_bg_s_save"] += new_de.Text + "1" + "," + new_bg.Text + "2" + "," + pl + "3" + ";";
                     add_das();
                 }
@@ -123,12 +139,66 @@ namespace App1
 
         public void add_die()
         {
+            //de
+            StackPanel stp_de_e = new StackPanel() { Orientation = Orientation.Horizontal, Margin = new Thickness(6), Height = 30 };
 
+            TextBlock txb_de_e = new TextBlock() { Text = "e", Width = 15, Margin = new Thickness(0, 0, 12, 0), VerticalAlignment = VerticalAlignment.Center, FontSize = 25 };
+
+            stp_de_e.Children.Add(txb_de_e);
+
+            StackPanel stp2_de_e = new StackPanel() { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Center };
+
+            TextBlock txb1_de_e_word = new TextBlock() { Text = new_de.Text, FontWeight = FontWeights.Bold, VerticalAlignment = VerticalAlignment.Center, FontSize = 25 };
+            TextBlock txb2_de_e_plur = new TextBlock() { Text = pl, VerticalAlignment = VerticalAlignment.Center, FontSize = 25 };
+
+            stp2_de_e.Children.Add(txb1_de_e_word);
+            stp2_de_e.Children.Add(txb2_de_e_plur);
+
+            stp_de_e.Children.Add(stp2_de_e);
+
+            de_word_der.Items.Add(stp_de_e);
+
+            //bg
+
+            StackPanel stp_bg_e = new StackPanel() { Orientation = Orientation.Horizontal, Margin = new Thickness(6), Height = 30 };
+
+            TextBlock txb1_bg_e_word = new TextBlock() { Text = new_bg.Text, VerticalAlignment = VerticalAlignment.Center, FontSize = 20 };
+
+            stp_bg_e.Children.Add(txb1_bg_e_word);
+
+            bg_word_der.Items.Add(stp_bg_e);
         }
 
         public void add_das()
         {
+            //de
+            StackPanel stp_de_s = new StackPanel() { Orientation = Orientation.Horizontal, Margin = new Thickness(6), Height = 30 };
 
+            TextBlock txb_de_s = new TextBlock() { Text = "s", Width = 15, Margin = new Thickness(0, 0, 12, 0), VerticalAlignment = VerticalAlignment.Center, FontSize = 25 };
+
+            stp_de_s.Children.Add(txb_de_s);
+
+            StackPanel stp2_de_s = new StackPanel() { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Center };
+
+            TextBlock txb1_de_s_word = new TextBlock() { Text = new_de.Text, FontWeight = FontWeights.Bold, VerticalAlignment = VerticalAlignment.Center, FontSize = 25 };
+            TextBlock txb2_de_s_plur = new TextBlock() { Text = pl, VerticalAlignment = VerticalAlignment.Center, FontSize = 25 };
+
+            stp2_de_s.Children.Add(txb1_de_s_word);
+            stp2_de_s.Children.Add(txb2_de_s_plur);
+
+            stp_de_s.Children.Add(stp2_de_s);
+
+            de_word_der.Items.Add(stp_de_s);
+
+            //bg
+
+            StackPanel stp_bg_s = new StackPanel() { Orientation = Orientation.Horizontal, Margin = new Thickness(6), Height = 30 };
+
+            TextBlock txb1_bg_s_word = new TextBlock() { Text = new_bg.Text, VerticalAlignment = VerticalAlignment.Center, FontSize = 20 };
+
+            stp_bg_s.Children.Add(txb1_bg_s_word);
+
+            bg_word_der.Items.Add(stp_bg_s);
         }
 
         private void del_word_click(object sender, RoutedEventArgs e)
